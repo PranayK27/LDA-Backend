@@ -1,4 +1,8 @@
-package com.example.ldabackend;
+package com.example.ldabackend.model;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -6,12 +10,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 @Entity
-@Table(name = "products")
-public class Products {
+@Table(name = "list")
+public class TechnologyList {
 
-    public Products() {
-    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,26 +25,11 @@ public class Products {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "price")
-    private String price;
-
     @Column(name = "description")
     private String description;
 
     @Column(name = "categoryId")
     private long categoryId;
-
-    @Column(name = "stock")
-    private int stock;
-
-    public Products(String name, String price, String description, long categoryId, int stock) {
-        super();
-        this.name = name;
-        this.price = price;
-        this.description = description;
-        this.categoryId = categoryId;
-        this.stock = stock;
-    }
 
     public long getId() {
         return id;
@@ -57,14 +47,6 @@ public class Products {
         this.name = name;
     }
 
-    public String getPrice() {
-        return price;
-    }
-
-    public void setPrice(String price) {
-        this.price = price;
-    }
-
     public String getDescription() {
         return description;
     }
@@ -79,14 +61,6 @@ public class Products {
 
     public void setCategoryId(long categoryId) {
         this.categoryId = categoryId;
-    }
-
-    public int getStock() {
-        return stock;
-    }
-
-    public void setStock(int stock) {
-        this.stock = stock;
     }
 
 }
