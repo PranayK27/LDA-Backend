@@ -23,22 +23,22 @@ public class LdaBackendApplication implements CommandLineRunner {
         TechnologyList technologyList1 = TechnologyList.builder()
                 .id(1)
                 .name("Spring Boot")
-                .description("Spring Boot is an open source Java-based framework used to create a micro Service. It is developed by Pivotal Team and is used to build stand-alone and production ready spring applications.")
-                .categoryId(2014)
+                .description("https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/")
+                .categoryId(2)
                 .build();
 
         TechnologyList technologyList2 = TechnologyList.builder()
                 .id(2)
                 .name("Angular")
-                .description("Angular is a TypeScript-based free and open-source web application framework led by the Angular Team at Google and by a community of individuals and corporations. Angular is a complete rewrite from the same team that built AngularJS.")
-                .categoryId(2016)
+                .description("https://angular.io/")
+                .categoryId(1)
                 .build();
 
         TechnologyList technologyList3 = TechnologyList.builder()
                 .id(3)
                 .name("Docker")
-                .description("Docker is a set of platform as a service products that use OS-level virtualization to deliver software in packages called containers. The service has both free and premium tiers. The software that hosts the containers is called Docker Engine.")
-                .categoryId(2013)
+                .description("https://www.docker.com/")
+                .categoryId(3)
                 .build();
 
         Listrepository.save(technologyList1);
