@@ -25,7 +25,7 @@ public class LoginController {
         return this.loginRepository.findAll();
     }
 
-    @PostMapping("/login")
+    @PostMapping()
     public String login(@RequestBody LoginRequestDTO loginRequestDTO) {
         String username = loginRequestDTO.getUsername();
         String password = loginRequestDTO.getPassword();
