@@ -17,6 +17,14 @@ public class LoginController {
     @Autowired
     private LoginService loginService;
 
+    @Autowired
+    private LoginRepository loginRepository;
+
+    @GetMapping("/cred")
+    public java.util.List<Login> getUsers() {
+        return this.loginRepository.findAll();
+    }
+
     @PostMapping("/login")
     public String login(@RequestBody LoginRequestDTO loginRequestDTO) {
         String username = loginRequestDTO.getUsername();

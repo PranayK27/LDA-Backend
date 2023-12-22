@@ -1,6 +1,31 @@
 package com.example.ldabackend.dto;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 public class LoginRequestDTO {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+    private String username;
+    private String password;
+
+    public LoginRequestDTO(Long id, String username, String password) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
     public String getUsername() {
         return username;
     }
@@ -17,13 +42,6 @@ public class LoginRequestDTO {
         this.password = password;
     }
 
-    private String username;
-    private String password;
-
-    public LoginRequestDTO(String username, String password) {
-        this.username = username;
-        this.password = password;
-    }
 
     // Constructors, getters, setters
 

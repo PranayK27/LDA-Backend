@@ -2,6 +2,7 @@ package com.example.ldabackend;
 
 import com.example.ldabackend.model.TechnologyList;
 import com.example.ldabackend.repository.ListRepository;
+import com.example.ldabackend.repository.LoginRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -16,6 +17,9 @@ public class LdaBackendApplication implements CommandLineRunner {
 
     @Autowired
     ListRepository Listrepository;
+
+    @Autowired
+    LoginRepository loginRepository;
     
     @Override
     public void run(String... args) throws Exception {
