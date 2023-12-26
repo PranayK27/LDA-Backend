@@ -27,21 +27,21 @@ public class LdaBackendApplication implements CommandLineRunner {
         TechnologyList technologyList1 = TechnologyList.builder()
                 .id(1)
                 .name("Spring Boot")
-                .description("https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/")
+                .description("Details")
                 .categoryId(2)
                 .build();
 
         TechnologyList technologyList2 = TechnologyList.builder()
                 .id(2)
                 .name("Angular")
-                .description("https://angular.io/")
+                .description("Details")
                 .categoryId(1)
                 .build();
 
         TechnologyList technologyList3 = TechnologyList.builder()
                 .id(3)
                 .name("Docker")
-                .description("https://www.docker.com/")
+                .description("Details")
                 .categoryId(3)
                 .build();
 

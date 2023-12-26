@@ -1,13 +1,12 @@
 package com.example.ldabackend.controller;
 
-import com.example.ldabackend.dto.LoginRequestDTO;
 import com.example.ldabackend.model.Login;
 import com.example.ldabackend.repository.LoginRepository;
 import com.example.ldabackend.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*")
@@ -25,15 +24,16 @@ public class LoginController {
         return this.loginRepository.findAll();
     }
 
-    @PostMapping()
-    public String login(@RequestBody LoginRequestDTO loginRequestDTO) {
-        String username = loginRequestDTO.getUsername();
-        String password = loginRequestDTO.getPassword();
+    @PostMapping("/login")
+    public HttpStatus login(@RequestBody Login login) {
+        Long id = login.getId();
+        String username = login.getUsername();
+        String password = login.getPassword();
 
-        if (loginService.authenticateUser(username, password)) {
-            return "Login successful!";
+        if (loginService.authenticateUser(id, username, password)) {
+            return HttpStatus.OK;
         } else {
-            return "Invalid credentials!";
+            return HttpStatus.INTERNAL_SERVER_ERROR;
         }
     }
 }

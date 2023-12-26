@@ -12,14 +12,17 @@ public class LoginService {
     @Autowired
     private LoginRepository loginRepository;
 
+    @Value("${login.default.id}")
+    private Long defaultId;
+
     @Value("${login.default.username}")
     private String defaultUsername;
 
     @Value("${login.default.password}")
     private String defaultPassword;
 
-    public boolean authenticateUser(String username, String password) {
-        if (defaultUsername.equals(username) && defaultPassword.equals(password)) {
+    public boolean authenticateUser(Long id, String username, String password) {
+        if (defaultId.equals(id) && defaultUsername.equals(username) && defaultPassword.equals(password)) {
             return true;
         }
 
