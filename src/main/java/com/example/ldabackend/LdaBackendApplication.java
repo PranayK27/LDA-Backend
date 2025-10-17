@@ -9,46 +9,46 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
-public class LdaBackendApplication implements CommandLineRunner {
+@SpringBootApplication(scanBasePackages = "com.example.ldabackend")
+public class LdaBackendApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(LdaBackendApplication.class, args);
     }
 
-    @Autowired
-    ListRepository Listrepository;
-
-    @Autowired
-    UserRepository userRepository;
+//    @Autowired
+//    ListRepository Listrepository;
+//
+//    @Autowired
+//    UserRepository userRepository;
     
-    @Override
-    public void run(String... args) throws Exception {
-
-        TechnologyList technologyList1 = TechnologyList.builder()
-                .id(1)
-                .name("Spring Boot")
-                .description("Details")
-                .categoryId(2)
-                .build();
-
-        TechnologyList technologyList2 = TechnologyList.builder()
-                .id(2)
-                .name("Angular")
-                .description("Details")
-                .categoryId(1)
-                .build();
-
-        TechnologyList technologyList3 = TechnologyList.builder()
-                .id(3)
-                .name("Docker")
-                .description("Details")
-                .categoryId(3)
-                .build();
-
-        Listrepository.save(technologyList1);
-        Listrepository.save(technologyList2);
-        Listrepository.save(technologyList3);
-    }
+//    @Override
+//    public void run(String... args) throws Exception {
+//
+//        TechnologyList technologyList1 = TechnologyList.builder()
+//                .id(1)
+//                .name("Spring Boot")
+//                .description("Details")
+//                .categoryId(2)
+//                .build();
+//
+//        TechnologyList technologyList2 = TechnologyList.builder()
+//                .id(2)
+//                .name("Angular")
+//                .description("Details")
+//                .categoryId(1)
+//                .build();
+//
+//        TechnologyList technologyList3 = TechnologyList.builder()
+//                .id(3)
+//                .name("Docker")
+//                .description("Details")
+//                .categoryId(3)
+//                .build();
+//
+//        Listrepository.save(technologyList1);
+//        Listrepository.save(technologyList2);
+//        Listrepository.save(technologyList3);
+//    }
 
 }

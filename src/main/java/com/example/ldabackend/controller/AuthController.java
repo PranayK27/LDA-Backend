@@ -10,22 +10,22 @@ import org.springframework.web.bind.annotation.*;
 import java.util.*;
 
 @RestController
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequestMapping("/api/auth")
-@CrossOrigin(origins = "http://localhost:4200")
 public class AuthController {
 
     @Autowired private AuthenticationManager authManager;
-    @Autowired private UserRepository userRepo;
+    private UserRepository userRepository;
     @Autowired private JwtUtil jwtUtil;
     @Autowired private PasswordEncoder passwordEncoder;
 
     @PostMapping("/register")
     public Map<String, String> register(@RequestBody User user) {
-        if (userRepo.existsByUsername(user.getUsername())) {
+        if (userRepository.existsByUsername(user.getUsername())) {
             return Collections.singletonMap("error", "Username already exists");
         }
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        userRepo.save(user);
+        userRepository.save(user);
         return Collections.singletonMap("message", "User registered successfully");
     }
 
@@ -38,7 +38,7 @@ public class AuthController {
             return Collections.singletonMap("error", "Invalid credentials");
         }
 
-        User user = userRepo.findByUsername(request.get("username")).get();
+        User user = userRepository.findByUsername(request.get("username")).get();
         String token = jwtUtil.generateToken(
                 org.springframework.security.core.userdetails.User
                         .withUsername(user.getUsername())
@@ -46,7 +46,6 @@ public class AuthController {
                         .roles("USER").build()
         );
 
-        // 👇 Return a JSON response containing the token
         return Collections.singletonMap("token", token);
     }
 }
